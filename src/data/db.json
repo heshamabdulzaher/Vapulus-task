@@ -516,35 +516,9 @@
       "mobileNumber": null,
       "firstName": "Yahia",
       "lastName": "Ali"
-    },
-    {
-      "userId": null,
-      "email": null,
-      "userName": null,
-      "mobileNumber": null,
-      "firstName": null,
-      "lastName": null
     }
   ],
   "recent-contact": [
-    {
-      "contactId": "nHKnF54asnurEqdv",
-      "email": "moaaz@vapulus.com",
-      "firstName": "moaaz",
-      "lastName": "yousef ",
-      "mobileNumber": "117752107086",
-      "image": "https://api.vapulus.com:81/profile/02a32ad2669e6fe298e607fe7cc0e1a0.jpg",
-      "created_ts": "2017-05-08T12:36:11.000Z"
-    },
-    {
-      "contactId": "nHKnF54asnurEqdv",
-      "email": "moaaz@vapulus.com",
-      "firstName": "moaaz",
-      "lastName": "yousef ",
-      "mobileNumber": "117752107086",
-      "image": "https://api.vapulus.com:81/profile/02a32ad2669e6fe298e607fe7cc0e1a0.jpg",
-      "created_ts": "2017-05-08T12:01:15.000Z"
-    },
     {
       "contactId": "nHKnF54asnurEqdv",
       "email": "moaaz@vapulus.com",

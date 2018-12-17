@@ -8,23 +8,36 @@
   </div>
   <!-- Contacts -->
   <div class="contacts">
-    <!-- The alphabet letters -->
-    
-    <!-- Here will append recent contacts -->
+    <!-- Recent contacts -->
     <div class="recent">
       <h5>Recent Contacts</h5>
-      <div class="user">
+      <div class="user" *ngFor="let user of recentContacts">
           <div class="avatar"></div>
           <div class="info">
             <div class="name">
-              John <span>Doe</span>
+              {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
             </div>
             <div class="email">johndoe@gmail.com</div>
           </div>
         </div>
     </div>
-    <!-- Here will append all contacts -->
-    <div class="all"></div>
+    <!-- All contacts -->
+    <div class="all">
+      <!-- render this div every letter group -->
+      <div class="letter-group" *ngFor="let letterGroup of allContacts">
+        <h5>{{letterGroup.letter | uppercase}}</h5>
+        <!-- render div for user every item in letterGroup.items -->
+        <div class="user" *ngFor="let user of letterGroup.items">
+          <div class="avatar"></div>
+          <div class="info">
+            <div class="name">
+              {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
+            </div>
+            <div class="email">johndoe@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- End contacts -->
 </section>
