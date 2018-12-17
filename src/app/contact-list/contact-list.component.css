@@ -1,0 +1,106 @@
+/* Global styling */
+h5 {
+  background-color: #f2f2f2;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding: 5px 15px;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(240, 240, 240, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 20px;
+}
+/* End Global styling */
+
+section {
+  width: 600px;
+  background-color: #fff;
+  box-shadow: 0 3px 13px rgba(0, 0, 0, 0.16);
+  margin: 50px auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* search stylying */
+.search {
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: calc(100% - 30px);
+  position: relative;
+}
+.search::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 15px);
+  left: -20px;
+  width: calc(100% + 40px);
+  height: 1px;
+  background-color: #ddd;
+}
+.search label {
+  padding-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search img {
+  width: 16px;
+}
+.search input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.contacts {
+  position: relative;
+  height: 400px;
+  overflow-y: auto;
+}
+
+/* Recent contacts */
+.recent {
+}
+
+/* contacts */
+.user {
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.user:last-of-type {
+  border: 0;
+}
+.user .avatar {
+  background-image: url("../../assets/1.jpg");
+  background-position: center center;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.user .info {
+  margin-left: 15px;
+}
+.user .info .name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.user .info .email {
+  color: #999;
+}
