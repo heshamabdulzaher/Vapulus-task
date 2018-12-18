@@ -7,10 +7,14 @@
     <input type="text" id="searchInput" placeholder="Search Contacts" [ngModel]="searchQueryWord"
         (focus)="showSearchResults($event)" (focusout)="hideSearchResults($event)" (ngModelChange)="getSearchQueryWors($event)">
   </div>
+  <!-- Alphabet -->
+  <div class="alphabet">
+    <div *ngFor="let letter of alphabet; index as i" (click)="scroll(letter)" >{{letter | uppercase}}</div>
+  </div>
   <!-- Contacts -->
   <div class="contacts" *ngIf="!serachMode">
     <!-- Recent contacts -->
-    <div class="recent">
+    <div class="recent" #recent>
       <h5>Recent Contacts</h5>
       <div class="user" *ngFor="let user of recentContacts">
         <div class="avatar"></div>
@@ -23,7 +27,7 @@
     <!-- All contacts -->
     <div class="all">
       <!-- render this div every letter group -->
-      <div *ngFor="let letterGroup of formatedContacts">
+      <div *ngFor="let letterGroup of formatedContacts"> 
         <h5>{{letterGroup.letter | uppercase}}</h5>
         <!-- render div for user every item in letterGroup.items -->
         <div class="user" *ngFor="let user of letterGroup.items">

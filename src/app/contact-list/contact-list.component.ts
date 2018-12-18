@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -31,7 +31,6 @@ export class ContactListComponent implements OnInit {
           user["fullName"] = user.firstName + " " + user.lastName;
           return user;
         });
-        console.log(res);
 
         this.recentContacts = res;
       });
@@ -85,15 +84,23 @@ export class ContactListComponent implements OnInit {
     this.searchResultItems = [];
     // search with query word over all contacts and that contact will match push it in searchResultItems array
     this.allContacts.filter(item => {
+      // if search word match
       if (!item.fullName.toLowerCase().search(e.toLowerCase())) {
         this.noDataFound = false;
         this.searchResultItems.push(item);
       } else {
+        // Your search dosen't match any contact
         if (this.searchResultItems.length === 0) {
           this.noDataFound = true;
         }
       }
       return item;
     });
+  }
+
+  @ViewChild("character") character: ElementRef;
+  scroll(el) {
+    el.nativeElement.scrollIntoView();
+    console.log(el);
   }
 }

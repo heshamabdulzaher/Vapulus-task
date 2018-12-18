@@ -67,6 +67,19 @@ section {
   font-weight: 500;
 }
 
+/* Alphabet */
+.alphabet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddd;
+}
+.alphabet div {
+  color: #999;
+  cursor: pointer;
+}
+
 /* Contacts */
 .contacts {
   position: relative;
