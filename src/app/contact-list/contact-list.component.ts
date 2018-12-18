@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  ElementRef
+} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -42,6 +48,7 @@ export class ContactListComponent implements OnInit {
         user["fullName"] = user.firstName + " " + user.lastName;
         return user;
       });
+
       this.allContacts = data;
       // we want to group the items by the first letter
       let formatedDataAsObject = data.reduce((acc, current) => {
@@ -79,6 +86,12 @@ export class ContactListComponent implements OnInit {
     }
   }
 
+  // Handle back to contact button
+  backToContact() {
+    this.serachMode = false;
+    // this.searchQueryWord =
+  }
+
   // Get seach query word
   getSearchQueryWors(e) {
     this.searchResultItems = [];
@@ -98,9 +111,19 @@ export class ContactListComponent implements OnInit {
     });
   }
 
-  @ViewChild("character") character: ElementRef;
-  scroll(el) {
-    el.nativeElement.scrollIntoView();
-    console.log(el);
+  @ViewChildren("contacts") contacts: QueryList<ElementRef>;
+
+  scroll(letter) {
+    if (this.contacts._results.length > 0) {
+      this.contacts._results.forEach(({ nativeElement: el }) => {
+        if (el.classList.contains(letter)) {
+          console.log("hello");
+          el.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    }
   }
 }
