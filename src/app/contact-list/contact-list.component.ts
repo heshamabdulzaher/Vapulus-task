@@ -33,6 +33,7 @@ export class ContactListComponent implements OnInit {
     this.http
       .get("http://localhost:3000/recent-contact")
       .subscribe((res: any) => {
+        // Add fullName property to each user
         res = res.map(user => {
           user["fullName"] = user.firstName + " " + user.lastName;
           return user;
@@ -44,12 +45,13 @@ export class ContactListComponent implements OnInit {
   // Get All contacts
   getAllContacts() {
     this.http.get("http://localhost:3000/contacts").subscribe((data: any) => {
+      // Add fullName property to each user
       data = data.map(user => {
         user["fullName"] = user.firstName + " " + user.lastName;
         return user;
       });
-
       this.allContacts = data;
+
       // we want to group the items by the first letter
       let formatedDataAsObject = data.reduce((acc, current) => {
         let firstLetter = current.firstName.charAt().toLowerCase();
@@ -76,20 +78,22 @@ export class ContactListComponent implements OnInit {
     });
   }
 
-  showSearchResults(e) {
+  // open search resuluts section
+  openSearchSection(e) {
     this.serachMode = true;
   }
 
-  hideSearchResults(e) {
+  // Close search section
+  closeSearchSection(e) {
     if (e.target.value.length == 0) {
       this.serachMode = false;
     }
   }
 
-  // Handle back to contact button
-  backToContact() {
+  // Go back to contact list
+  backToContact(searchInput) {
     this.serachMode = false;
-    // this.searchQueryWord =
+    searchInput.value = "";
   }
 
   // Get seach query word
@@ -112,12 +116,11 @@ export class ContactListComponent implements OnInit {
   }
 
   @ViewChildren("contacts") contacts: QueryList<ElementRef>;
-
-  scroll(letter) {
+  // scroll to the letter group section with click event
+  scrollToLetterSection(letter) {
     if (this.contacts._results.length > 0) {
       this.contacts._results.forEach(({ nativeElement: el }) => {
         if (el.classList.contains(letter)) {
-          console.log("hello");
           el.scrollIntoView({
             behavior: "smooth",
             block: "start"

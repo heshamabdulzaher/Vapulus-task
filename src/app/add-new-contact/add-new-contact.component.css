@@ -21,11 +21,11 @@ h1 {
   width: 100%;
 }
 .mat-form-field.phone {
-  width: calc(100% - 60px);
+  width: calc(100% - 130px);
   margin-left: 10px;
 }
 .mat-form-field.country-code {
-  width: 50px;
+  width: 120px;
 }
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
   padding-bottom: 1.5em;

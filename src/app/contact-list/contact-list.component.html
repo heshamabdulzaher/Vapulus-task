@@ -4,12 +4,12 @@
     <label for="searchInput">
         <img src="assets/svg/search.svg" alt="Search icon">
     </label>
-    <input type="text" id="searchInput" placeholder="Search Contacts" [ngModel]="searchQueryWord"
-        (focus)="showSearchResults($event)" (focusout)="hideSearchResults($event)" (ngModelChange)="getSearchQueryWors($event)">
+    <input type="text" #search id="searchInput" placeholder="Search Contacts" [ngModel]="searchQueryWord"
+        (focus)="openSearchSection($event)" (focusout)="closeSearchSection($event)" (ngModelChange)="getSearchQueryWors($event)">
   </div>
   <!-- Alphabet -->
   <div class="alphabet" *ngIf="!serachMode">
-    <div *ngFor="let contact of formatedContacts" (click)="scroll(contact.letter)">{{contact.letter | uppercase}}</div>
+    <div *ngFor="let contact of formatedContacts" (click)="scrollToLetterSection(contact.letter)">{{contact.letter | uppercase}}</div>
   </div>
   <!-- Contacts -->
   <div class="contacts" *ngIf="!serachMode">
@@ -58,7 +58,7 @@
       <img src="../../assets/svg/no-data-found.svg" alt="Your search dosen't match any contact">
       <p>Your search dosen't match any contact!</p>
        <div class="actions">
-         <button mat-stroked-button (click)="backToContact()">Back to contacts</button>
+         <button mat-stroked-button (click)="backToContact(search)">Back to contacts</button>
          <button mat-flat-button class="add" routerLink="/add-new-contact">Add a new contact</button>
        </div>
       </div>
