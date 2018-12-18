@@ -31,9 +31,9 @@
         <h5>{{letterGroup.letter | uppercase}}</h5>
         <!-- render div for user every item in letterGroup.items -->
         <div class="user" *ngFor="let user of letterGroup.items">
-          <div class="avatar" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}"></div>
+          <div class="avatar" [ngStyle]=" user.image && { 'background-image': 'url(' + user.image + ')'}"></div>
           <div class="info">
-            <div class="name">{{user.fullName}}</div>
+            <div class="name" *ngIf="user.image">{{user.fullName}}</div>
             <div class="email">{{user.email}}</div>
           </div>
         </div>
