@@ -16,8 +16,8 @@
     <!-- Recent contacts -->
     <div class="recent" #recent>
       <h5>Recent Contacts</h5>
-      <div class="user" *ngFor="let user of recentContacts" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}">
-        <div class="avatar"></div>
+      <div class="user" *ngFor="let user of recentContacts">
+        <div class="avatar" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}"></div>
         <div class="info">
           <div class="name">{{user.fullName}}</div>
           <div class="email">johndoe@gmail.com</div>
@@ -30,8 +30,8 @@
       <div *ngFor="let letterGroup of formatedContacts" [class]="letterGroup.letter" #contacts>
         <h5>{{letterGroup.letter | uppercase}}</h5>
         <!-- render div for user every item in letterGroup.items -->
-        <div class="user" *ngFor="let user of letterGroup.items" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}">
-          <div class="avatar"></div>
+        <div class="user" *ngFor="let user of letterGroup.items">
+          <div class="avatar" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}"></div>
           <div class="info">
             <div class="name">{{user.fullName}}</div>
             <div class="email">{{user.email}}</div>
@@ -46,8 +46,8 @@
   <!-- Search mode -->
   <div class="search_results" *ngIf="serachMode">
     <!-- User -->
-    <div class="user" *ngFor="let user of searchResultItems" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}">
-      <div class="avatar"></div>
+    <div class="user" *ngFor="let user of searchResultItems">
+      <div class="avatar" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}"></div>
       <div class="info">
         <div class="name">{{user.fullName}}</div>
         <div class="email">{{user.email}}</div>

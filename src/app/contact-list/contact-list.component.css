@@ -100,7 +100,7 @@ section {
 .user .avatar {
   background-image: url("../../assets/svg/user.svg");
   background-position: center center;
-  background-size: 60%;
+  background-size: 80%;
   background-repeat: no-repeat;
   background-color: #f7f7f7;
   width: 50px;

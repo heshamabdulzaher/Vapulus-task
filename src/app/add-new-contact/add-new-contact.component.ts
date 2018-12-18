@@ -10,12 +10,12 @@ import { Router } from "@angular/router";
 export class AddNewContactComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
-  photoUploadedSrc;
+  dataImageURL;
 
   ngOnInit() {}
 
   handlerFunction(contactForm) {
-    console.log(contactForm.form.value);
+    contactForm.form.value.image = this.dataImageURL;
     if (contactForm.form.valid) {
       // Done
       this.http
@@ -31,6 +31,7 @@ export class AddNewContactComponent implements OnInit {
     if (e.target.files && e.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (res: any) => {
+        this.dataImageURL = res.target.result;
         avatar.style.backgroundImage = `url(' ${res.target.result} ')`;
         avatar.style.backgroundSize = "cover";
         avatar.style.border = "0";

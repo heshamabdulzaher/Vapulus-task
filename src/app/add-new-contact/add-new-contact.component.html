@@ -7,7 +7,7 @@
       <h4>Add Photo</h4>
     </label>
     <input type="file" id="uploadImage" accept="image/*" (change)="readURL($event, avatar)" 
-      name="addPhoto" #addPhoto="ngModel" [(ngModel)]="contactForm.addPhoto">
+      name="image" #image="ngModel" [(ngModel)]="contactForm.image">
   </div>
   <!-- First name -->
   <mat-form-field>
