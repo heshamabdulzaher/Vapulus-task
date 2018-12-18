@@ -1,3 +1,30 @@
-<p>
-  add-new-contact works!
-</p>
+<form>
+  <h1>Add a New Contact</h1>
+  <!-- First name -->
+  <mat-form-field>
+    <input matInput placeholder="First name">
+  </mat-form-field>
+  <!-- Last name -->
+  <mat-form-field>
+    <input matInput placeholder="Last name">
+  </mat-form-field>
+  <!-- Phone -->
+  <mat-form-field class="country-code">
+    <input matInput value="+20">
+  </mat-form-field>
+  <mat-form-field class="phone">
+    <input matInput placeholder="Type your phone number">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Email">
+  </mat-form-field>
+
+  <div class="actions">
+    <!-- <button mat-button>Cancel</button>
+    <button mat-button color="primary">Save</button> -->
+    <button mat-flat-button class="cancel">Cancel</button>
+  <button mat-flat-button color="primary">Save</button>
+  </div>
+
+</form>

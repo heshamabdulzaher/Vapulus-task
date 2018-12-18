@@ -1,0 +1,39 @@
+form {
+  width: 600px;
+  background-color: #fff;
+  box-shadow: 0 3px 13px rgba(0, 0, 0, 0.16);
+  margin: 50px auto;
+  padding: 0 24px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 400;
+  padding-bottom: 10px;
+  color: #333;
+  border-bottom: 2px solid #333;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+.mat-form-field.phone {
+  width: calc(100% - 60px);
+  margin-left: 10px;
+}
+.mat-form-field.country-code {
+  width: 50px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 1.5em;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+}
+.actions .cancel {
+  margin-right: 15px;
+}
