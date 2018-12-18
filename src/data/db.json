@@ -163,16 +163,6 @@
       "lastName": "Sallam"
     },
     {
-      "id": 19,
-      "userId": "rFZNBuIWoBMn3bES",
-      "email": null,
-      "userName": "arfmlive",
-      "image": "https://api.vapulus.com:81/profile/fe7ee8fc1959cc7214fa21c4840dff0a.jpg",
-      "mobileNumber": "2001016666903",
-      "firstName": "AR Elsharawy",
-      "lastName": null
-    },
-    {
       "id": 20,
       "userId": null,
       "email": "asmaa@ooopay.com",
