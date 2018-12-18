@@ -118,8 +118,8 @@ export class ContactListComponent implements OnInit {
   @ViewChildren("contacts") contacts: QueryList<ElementRef>;
   // scroll to the letter group section with click event
   scrollToLetterSection(letter) {
-    if (this.contacts._results.length > 0) {
-      this.contacts._results.forEach(({ nativeElement: el }) => {
+    if (this.contacts["_results"].length > 0) {
+      this.contacts["_results"].forEach(({ nativeElement: el }) => {
         if (el.classList.contains(letter)) {
           el.scrollIntoView({
             behavior: "smooth",
