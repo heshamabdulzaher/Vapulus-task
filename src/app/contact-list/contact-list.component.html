@@ -4,27 +4,28 @@
     <label for="searchInput">
         <img src="assets/svg/search.svg" alt="Search icon">
     </label>
-    <input type="text" id="searchInput" placeholder="Search Contacts">
+    <input type="text" id="searchInput" placeholder="Search Contacts" [ngModel]="searchQueryWord"
+      (focus)="toggleSearchMode()" (focusout)="toggleSearchMode()" (ngModelChange)="getSearchQueryWors($event)">
   </div>
   <!-- Contacts -->
-  <div class="contacts">
+  <div class="contacts" *ngIf="!serachMode">
     <!-- Recent contacts -->
     <div class="recent">
       <h5>Recent Contacts</h5>
       <div class="user" *ngFor="let user of recentContacts">
-          <div class="avatar"></div>
-          <div class="info">
-            <div class="name">
-              {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
-            </div>
-            <div class="email">johndoe@gmail.com</div>
+        <div class="avatar"></div>
+        <div class="info">
+          <div class="name">
+            {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
           </div>
+          <div class="email">johndoe@gmail.com</div>
         </div>
+      </div>
     </div>
     <!-- All contacts -->
     <div class="all">
       <!-- render this div every letter group -->
-      <div *ngFor="let letterGroup of allContacts">
+      <div *ngFor="let letterGroup of formatedContacts">
         <h5>{{letterGroup.letter | uppercase}}</h5>
         <!-- render div for user every item in letterGroup.items -->
         <div class="user" *ngFor="let user of letterGroup.items">
@@ -40,6 +41,20 @@
     </div>
   </div>
   <!-- End contacts -->
+
+  <!-- Search mode -->
+  <div class="search_results" *ngIf="serachMode">
+    <div class="user" *ngFor="let user of searchResultItems">
+      <div class="avatar"></div>
+      <div class="info">
+        <div class="name">
+          {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
+        </div>
+        <div class="email">johndoe@gmail.com</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Add new contacts -->
   <div class="addNewContacts" routerLink="/add-new-contact"></div>
 </section>

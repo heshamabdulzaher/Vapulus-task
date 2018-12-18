@@ -123,3 +123,9 @@ section {
   cursor: pointer;
   outline: 0;
 }
+
+/* Search */
+.search_results {
+  height: 420px;
+  overflow: auto;
+}
