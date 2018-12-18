@@ -5,7 +5,7 @@
         <img src="assets/svg/search.svg" alt="Search icon">
     </label>
     <input type="text" id="searchInput" placeholder="Search Contacts" [ngModel]="searchQueryWord"
-      (focus)="toggleSearchMode()" (focusout)="toggleSearchMode()" (ngModelChange)="getSearchQueryWors($event)">
+        (focus)="showSearchResults($event)" (focusout)="hideSearchResults($event)" (ngModelChange)="getSearchQueryWors($event)">
   </div>
   <!-- Contacts -->
   <div class="contacts" *ngIf="!serachMode">
@@ -15,9 +15,7 @@
       <div class="user" *ngFor="let user of recentContacts">
         <div class="avatar"></div>
         <div class="info">
-          <div class="name">
-            {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
-          </div>
+          <div class="name">{{user.fullName}}</div>
           <div class="email">johndoe@gmail.com</div>
         </div>
       </div>
@@ -31,12 +29,11 @@
         <div class="user" *ngFor="let user of letterGroup.items">
           <div class="avatar"></div>
           <div class="info">
-            <div class="name">
-              {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
-            </div>
-            <div class="email">johndoe@gmail.com</div>
+            <div class="name">{{user.fullName}}</div>
+            <div class="email">{{user.email}}</div>
           </div>
         </div>
+        <!-- / user -->
       </div>
     </div>
   </div>
@@ -44,14 +41,18 @@
 
   <!-- Search mode -->
   <div class="search_results" *ngIf="serachMode">
+    <!-- User -->
     <div class="user" *ngFor="let user of searchResultItems">
       <div class="avatar"></div>
       <div class="info">
-        <div class="name">
-          {{user.firstName}} <span *ngIf="user.lastName">{{user.lastName}}</span>
-        </div>
-        <div class="email">johndoe@gmail.com</div>
+        <div class="name">{{user.fullName}}</div>
+        <div class="email">{{user.email}}</div>
       </div>
+    </div>
+    <!-- No data found -->
+    <div class="no_data_found" *ngIf="noDataFound">
+      <img src="../../assets/svg/no-data-found.svg" alt="Your search dosen't match any contact">
+      <p>Your search dosen't match any contact!</p>
     </div>
   </div>
 

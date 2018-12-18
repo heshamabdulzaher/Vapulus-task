@@ -16,6 +16,7 @@ export class ContactListComponent implements OnInit {
   serachMode: boolean = false;
   searchQueryWord: string = "";
   searchResultItems = [];
+  noDataFound: boolean = false;
 
   ngOnInit() {
     this.getRecentContacts();
@@ -23,13 +24,25 @@ export class ContactListComponent implements OnInit {
   }
   // Get Recent contacts
   getRecentContacts() {
-    this.http.get("http://localhost:3000/recent-contact").subscribe(res => {
-      this.recentContacts = res;
-    });
+    this.http
+      .get("http://localhost:3000/recent-contact")
+      .subscribe((res: any) => {
+        res = res.map(user => {
+          user["fullName"] = user.firstName + " " + user.lastName;
+          return user;
+        });
+        console.log(res);
+
+        this.recentContacts = res;
+      });
   }
   // Get All contacts
   getAllContacts() {
     this.http.get("http://localhost:3000/contacts").subscribe((data: any) => {
+      data = data.map(user => {
+        user["fullName"] = user.firstName + " " + user.lastName;
+        return user;
+      });
       this.allContacts = data;
       // we want to group the items by the first letter
       let formatedDataAsObject = data.reduce((acc, current) => {
@@ -57,19 +70,30 @@ export class ContactListComponent implements OnInit {
     });
   }
 
-  // Toggle Search mode to show and hidden search results
-  toggleSearchMode() {
-    this.serachMode = !this.serachMode;
+  showSearchResults(e) {
+    this.serachMode = true;
+  }
+
+  hideSearchResults(e) {
+    if (e.target.value.length == 0) {
+      this.serachMode = false;
+    }
   }
 
   // Get seach query word
   getSearchQueryWors(e) {
     this.searchResultItems = [];
     // search with query word over all contacts and that contact will match push it in searchResultItems array
-    this.allContacts.forEach(item => {
-      if (!item.firstName.toLowerCase().search(e)) {
+    this.allContacts.filter(item => {
+      if (!item.fullName.toLowerCase().search(e.toLowerCase())) {
+        this.noDataFound = false;
         this.searchResultItems.push(item);
+      } else {
+        if (this.searchResultItems.length === 0) {
+          this.noDataFound = true;
+        }
       }
+      return item;
     });
   }
 }

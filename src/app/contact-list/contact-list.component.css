@@ -129,3 +129,14 @@ section {
   height: 420px;
   overflow: auto;
 }
+
+.no_data_found img {
+  display: block;
+  width: 150px;
+  margin: 40px auto 30px;
+}
+.no_data_found p {
+  font-size: 18px;
+  color: #999;
+  text-align: center;
+}

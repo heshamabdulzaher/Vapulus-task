@@ -17,7 +17,6 @@ export class AddNewContactComponent implements OnInit {
       this.http
         .post("http://localhost:3000/contacts", contactForm.form.value)
         .subscribe(res => {
-          console.log(res);
           // 500 Internal Server Error
         });
     }
