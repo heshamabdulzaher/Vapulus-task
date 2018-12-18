@@ -1,8 +1,17 @@
 <form #contactForm="ngForm" novalidate (ngSubmit)="handlerFunction(contactForm)">
   <h1>Add a New Contact</h1>
+  <!-- Upload photo -->
+  <div class="upload_img">
+    <label for="uploadImage">
+      <div class="avatar" #avatar></div>
+      <h4>Add Photo</h4>
+    </label>
+    <input type="file" id="uploadImage" accept="image/*" (change)="readURL($event, avatar)" 
+      name="addPhoto" #addPhoto="ngModel" [(ngModel)]="contactForm.addPhoto">
+  </div>
   <!-- First name -->
   <mat-form-field>
-    <input matInput required autofocus placeholder="First name" name="firstName" #firstName="ngModel" [(ngModel)]="contactForm.firstName">
+    <input matInput required placeholder="First name" name="firstName" #firstName="ngModel" [(ngModel)]="contactForm.firstName">
   </mat-form-field>
   <!-- Last name -->
   <mat-form-field>
