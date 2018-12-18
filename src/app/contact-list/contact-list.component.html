@@ -33,7 +33,7 @@
         <div class="user" *ngFor="let user of letterGroup.items">
           <div class="avatar" [ngStyle]=" user.image && { 'background-image': 'url(' + user.image + ')'}"></div>
           <div class="info">
-            <div class="name" *ngIf="user.image">{{user.fullName}}</div>
+            <div class="name">{{user.fullName}}</div>
             <div class="email">{{user.email}}</div>
           </div>
         </div>
