@@ -8,7 +8,7 @@ Run `git clone https://github.com/heshamabdulzaher/Vapulus-task.git` to clone my
 
 # Json server 
 
-Run `npm i json-server` to install json server
+Run `npm install -g json-server` to install json server,
 Run `npm run db` to start json server
 
 # Start project 
