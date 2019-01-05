@@ -93,20 +93,20 @@ export class ContactListComponent implements OnInit {
   }
 
   // Get seach query word
-  getSearchQueryWors(e) {
+  handleSearchFunctionality(e) {
     if (e.length > 0) {
       this.serachMode = true;
       this.identicalContacts = [];
       // search with query word over all contacts and that contact will match push it in identicalContacts array
       this.allContacts.filter(item => {
         // if search word match
-        if (!item.fullName.toLowerCase().search(e.toLowerCase())) {
-          this.noDataFound = false;
+        if (item.fullName.toLowerCase().search(e.toLowerCase()) >= 0) {
           this.identicalContacts.push(item);
         } else {
-          // Your search dosen't match any contact
           if (this.identicalContacts.length === 0) {
             this.noDataFound = true;
+          } else {
+            this.noDataFound = false;
           }
         }
         return item;

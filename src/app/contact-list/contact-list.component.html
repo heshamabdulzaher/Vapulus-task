@@ -5,7 +5,7 @@
         <img src="assets/svg/search.svg" alt="Search icon">
     </label>
     <input type="text" autocomplete="off" #search id="searchInput" placeholder="Search Contacts" [(ngModel)]="searchQueryWord"
-        (focus)="focusOnSearchInput($event)" (focusout)="closeSearchSection($event)" (ngModelChange)="getSearchQueryWors($event)">
+        (focusout)="closeSearchSection($event)" (ngModelChange)="handleSearchFunctionality($event)">
   </div>
   <!-- Alphabet -->
   <div class="alphabet" *ngIf="!serachMode">
