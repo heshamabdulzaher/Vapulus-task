@@ -21,7 +21,7 @@ export class ContactListComponent implements OnInit {
   recentContacts;
   serachMode: boolean = false;
   searchQueryWord: string = "";
-  searchResultItems = [];
+  identicalContacts = [];
   noDataFound: boolean = false;
 
   ngOnInit() {
@@ -42,6 +42,7 @@ export class ContactListComponent implements OnInit {
         this.recentContacts = res;
       });
   }
+
   // Get All contacts
   getAllContacts() {
     this.http.get("http://localhost:3000/contacts").subscribe((data: any) => {
@@ -78,14 +79,7 @@ export class ContactListComponent implements OnInit {
     });
   }
 
-  // open search resuluts section
-  openSearchSection(e) {
-    console.log(e.target.value);
-    this.serachMode = true;
-    this.searchResultItems = this.allContacts;
-  }
-
-  // Close search section
+  // Close search section when focusOut on search input
   closeSearchSection(e) {
     if (e.target.value.length == 0) {
       this.serachMode = false;
@@ -100,21 +94,26 @@ export class ContactListComponent implements OnInit {
 
   // Get seach query word
   getSearchQueryWors(e) {
-    this.searchResultItems = [];
-    // search with query word over all contacts and that contact will match push it in searchResultItems array
-    this.allContacts.filter(item => {
-      // if search word match
-      if (!item.fullName.toLowerCase().search(e.toLowerCase())) {
-        this.noDataFound = false;
-        this.searchResultItems.push(item);
-      } else {
-        // Your search dosen't match any contact
-        if (this.searchResultItems.length === 0) {
-          this.noDataFound = true;
+    if (e.length > 0) {
+      this.serachMode = true;
+      this.identicalContacts = [];
+      // search with query word over all contacts and that contact will match push it in identicalContacts array
+      this.allContacts.filter(item => {
+        // if search word match
+        if (!item.fullName.toLowerCase().search(e.toLowerCase())) {
+          this.noDataFound = false;
+          this.identicalContacts.push(item);
+        } else {
+          // Your search dosen't match any contact
+          if (this.identicalContacts.length === 0) {
+            this.noDataFound = true;
+          }
         }
-      }
-      return item;
-    });
+        return item;
+      });
+    } else {
+      this.serachMode = false;
+    }
   }
 
   @ViewChildren("contacts") contacts: QueryList<ElementRef>;

@@ -4,8 +4,8 @@
     <label for="searchInput">
         <img src="assets/svg/search.svg" alt="Search icon">
     </label>
-    <input type="text" autocomplete="off" #search id="searchInput" placeholder="Search Contacts" [ngModel]="searchQueryWord"
-        (focus)="openSearchSection($event)" (focusout)="closeSearchSection($event)" (ngModelChange)="getSearchQueryWors($event)">
+    <input type="text" autocomplete="off" #search id="searchInput" placeholder="Search Contacts" [(ngModel)]="searchQueryWord"
+        (focus)="focusOnSearchInput($event)" (focusout)="closeSearchSection($event)" (ngModelChange)="getSearchQueryWors($event)">
   </div>
   <!-- Alphabet -->
   <div class="alphabet" *ngIf="!serachMode">
@@ -45,9 +45,9 @@
 
   <!-- Search mode -->
   <div class="search_results" *ngIf="serachMode">
-    <h5 *ngIf="!noDataFound">Contacts <span *ngIf="searchResultItems">{{searchResultItems.length}} Contacts found</span></h5>
+    <h5 *ngIf="!noDataFound">Contacts <span *ngIf="identicalContacts">{{identicalContacts.length}} Contacts found</span></h5>
     <!-- User -->
-    <div class="user" *ngFor="let user of searchResultItems">
+    <div class="user" *ngFor="let user of identicalContacts">
       <div class="avatar" [ngStyle]="{ 'background-image': 'url(' + user.image + ')'}"></div>
       <div class="info">
         <div class="name">{{user.fullName}}</div>
