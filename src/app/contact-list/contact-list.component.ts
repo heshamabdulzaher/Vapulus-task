@@ -80,6 +80,7 @@ export class ContactListComponent implements OnInit {
 
   // open search resuluts section
   openSearchSection(e) {
+    console.log(e.target.value);
     this.serachMode = true;
     this.searchResultItems = this.allContacts;
   }
@@ -100,7 +101,6 @@ export class ContactListComponent implements OnInit {
   // Get seach query word
   getSearchQueryWors(e) {
     this.searchResultItems = [];
-
     // search with query word over all contacts and that contact will match push it in searchResultItems array
     this.allContacts.filter(item => {
       // if search word match
